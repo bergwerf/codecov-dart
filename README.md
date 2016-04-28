@@ -7,5 +7,5 @@ upload them to Codecov. To use it, set the following environment variables:
 
 And run:
 ```
-bash <(curl -s https://rawgit.com/hermanbergwerf/codecov-dart/upload.sh)
+bash <(curl -s https://raw.githubusercontent.com/hermanbergwerf/codecov-dart/master/upload.sh)
 ```
