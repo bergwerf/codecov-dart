@@ -49,7 +49,7 @@ wait
 
 # Format coverage as LCOV
 pub global run coverage:format_coverage \
-    --package-root=packages \
+    --packages=./.packages \
     --report-on lib \
     --in $COVERAGE_OUTPUT \
     --out $LCOV_OUTPUT \
