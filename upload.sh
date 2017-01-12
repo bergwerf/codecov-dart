@@ -41,7 +41,7 @@ pub global activate coverage
 # 3. Wait until ready
 dart --checked --observe=$OBSERVATORY_PORT $DART_TESTS_MAIN & \
 pub global run coverage:collect_coverage \
-    --port=$OBSERVATORY_PORT \
+    --uri=http://127.0.0.1:$OBSERVATORY_PORT/ \
     --out $COVERAGE_OUTPUT \
     --wait-paused \
     --resume-isolates & \
