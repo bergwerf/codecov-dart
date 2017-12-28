@@ -30,22 +30,22 @@ OBSERVATORY_PORT=8000
 COVERAGE_OUTPUT=coverage.json
 LCOV_OUTPUT=coverage.lcov
 
+# Echo a version number for inspecting logs.
+echo "Codecov-Dart v1"
+
 # Fast fail
 set -e
 
 # Get coverage package
 pub global activate coverage
 
-# 1. Run tests entry file (env `DART_TESTS_MAIN`)
-# 2. Collect coverage report
-# 3. Wait until ready
-dart --checked --observe=$OBSERVATORY_PORT $DART_TESTS_MAIN & \
+# Start coverage collector and then run tests.
 pub global run coverage:collect_coverage \
     --uri=http://127.0.0.1:$OBSERVATORY_PORT/ \
     --out $COVERAGE_OUTPUT \
     --wait-paused \
-    --resume-isolates & \
-wait
+    --resume-isolates &
+dart --checked --observe=$OBSERVATORY_PORT $DART_TESTS_MAIN
 
 # Format coverage as LCOV
 pub global run coverage:format_coverage \
